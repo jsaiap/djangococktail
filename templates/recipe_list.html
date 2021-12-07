@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Liste des recettes</title>
+</head>
+<body>
+    <ul>
+        {% for object in object_list %}
+            <li>{{ object }}  </li>{
+        {% endfor %}
+    </ul>
+</body>
+</html>
