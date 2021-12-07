@@ -21,6 +21,16 @@ class Ingredient(models.Model):
             return f"{self.name_singular}"
         return "? (no name_insgular)"
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.name or "? (no name) ?"
+
+class RecipeTag(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
 class Unit(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
 
