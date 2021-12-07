@@ -1,6 +1,4 @@
-# README
-
-## Commands
-createsuperuser
-makemigrations
-migrate
+# Commandes
+- ```createsuperuser```
+- ```makemigrations```
+- ```migrate```

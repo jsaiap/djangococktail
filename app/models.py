@@ -31,6 +31,9 @@ class RecipeTag(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.recipe} / {self.tag}"
+
 class Unit(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
 
@@ -38,3 +41,14 @@ class Unit(models.Model):
         if self.name != "":
             return f"{self.name}"
         return "? (no name)"
+
+class RecipeIngredientUnit(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    value = models.FloatField(default=1.0)
+    unit_is_displayed = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.recipe} / {self.ingredient} / {self.unit}"
+
