@@ -7,8 +7,13 @@
 <body>
     <ul>
         {% for object in object_list %}
-            <li>{{ object }}  </li>{
+            <li>
+                <a href="{% url "recipe_detail" object.pk %}">
+                    {{ object }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
+    <a href="{% url "index" %}">Retour</a>
 </body>
 </html>

@@ -20,7 +20,7 @@ from app.views import IndexView, RecipeListView, RecipeDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view()),
-    path('recipes', RecipeListView.as_view()),
-    path('recipes/<int:pk>', RecipeDetailView.as_view())
+    path('', IndexView.as_view(), name="index"),
+    path('recipes', RecipeListView.as_view(), name="recipe_list"),
+    path('recipes/<int:pk>', RecipeDetailView.as_view(), name="recipe_detail")
 ]
