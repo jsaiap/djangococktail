@@ -50,5 +50,7 @@ class RecipeIngredientUnit(models.Model):
     unit_is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.recipe} / {self.ingredient} / {self.unit}"
+        if self.unit_is_displayed:
+            return f"{self.recipe} {self.value} {self.unit} {self.ingredient}"
+        return f"{self.recipe} {self.value} {self.ingredient}"
 
