@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 from app.models import Recipe, Ingredient
 
@@ -23,3 +23,9 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
             recipeingredientunit__recipe__pk=self.object.pk
         )
         return result
+
+
+class IngredientCreateView(LoginRequiredMixin, CreateView):
+    template_name = "ingredient_create.html"
+    model = Ingredient
+    fields = ('name_singular', 'name_plural')

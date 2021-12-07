@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Ajouter un ingrédient</title>
+</head>
+<body>
+
+    <form action="" method="post">
+        {% for field in form %}
+            <p>
+                <span>{{ field.label }} :</span>
+                {{ field }}
+            </p>
+        {% endfor %}
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <a href="{% url "index" %}">Retour</a>
+</body>
+</html>
