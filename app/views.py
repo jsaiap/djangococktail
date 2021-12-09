@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, FormView
@@ -54,3 +55,17 @@ class IngredientUpdateView(LoginRequiredMixin, UpdateView):
 class LoginFormView(FormView):
     template_name = 'login.html'
     form_class = LoginForm
+
+    def form_valid(self, form):
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            login(self.request)
+            return super().form_valid(form)
+
+        form.add_error(None, "email / mdp invalide")
+        return super().form_invalid(form)
+
+
