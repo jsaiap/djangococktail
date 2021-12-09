@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, FormView
 
+from app.forms.login import LoginForm
 from app.models import Recipe, Ingredient
 
 
@@ -48,3 +49,8 @@ class IngredientUpdateView(LoginRequiredMixin, UpdateView):
     model = Ingredient
     fields = ('name_singular', 'name_plural')
     success_url = reverse_lazy('ingredients_list')
+
+
+class LoginFormView(FormView):
+    template_name = 'login.html'
+    form_class = LoginForm

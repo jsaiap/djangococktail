@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from app.views import IndexView, RecipeListView, RecipeDetailView, IngredientCreateView, IngredientListView, \
-    IngredientUpdateView
+    IngredientUpdateView, LoginFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     path('recipe/<int:pk>', RecipeDetailView.as_view(), name="recipe_detail"),
     path('ingredients', IngredientListView.as_view(), name="ingredient_list"),
     path('ingredient/create', IngredientCreateView.as_view(), name="ingredient_create"),
-    path('ingredient/update/<int:pk>', IngredientUpdateView.as_view(), name="ingredient_update")
+    path('ingredient/update/<int:pk>', IngredientUpdateView.as_view(), name="ingredient_update"),
+    path('login', LoginFormView.as_view(), name="login")
 ]
