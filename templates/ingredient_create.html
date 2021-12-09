@@ -8,6 +8,9 @@
 
     <form action="" method="post">
         {% for field in form %}
+            {% if field.error %}
+                <span class="field-error">{{ field.error }}</span>
+            {% endif %}
             <p>
                 <span>{{ field.label }} :</span>
                 {{ field }}
