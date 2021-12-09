@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 
 from app.models import Recipe, Ingredient
 
@@ -34,4 +35,11 @@ class IngredientCreateView(LoginRequiredMixin, CreateView):
     template_name = "ingredient_create.html"
     model = Ingredient
     fields = ('name_singular', 'name_plural')
-    success_url = '/ingredients'
+    success_url = reverse_lazy('ingredients_list')
+
+
+class IngredientUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = "ingredient_create.html"
+    model = Ingredient
+    fields = ('name_singular', 'name_plural')
+    success_url = reverse_lazy('ingredients_list')
