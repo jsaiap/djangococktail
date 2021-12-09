@@ -13,6 +13,11 @@ class RecipeListView(ListView):
     model = Recipe
 
 
+class IngredientListView(ListView):
+    template_name = "ingredient_list.html"
+    model = Ingredient
+
+
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     template_name = "recipe_detail.html"
     model = Recipe
@@ -29,3 +34,4 @@ class IngredientCreateView(LoginRequiredMixin, CreateView):
     template_name = "ingredient_create.html"
     model = Ingredient
     fields = ('name_singular', 'name_plural')
+    success_url = '/ingredients'
