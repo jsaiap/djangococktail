@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app.views import IndexView, RecipeListView, RecipeDetailView, IngredientCreateView
+from app.views import IndexView, RecipeListView, RecipeDetailView, IngredientCreateView, IngredientListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name="index"),
     path('recipes', RecipeListView.as_view(), name="recipe_list"),
     path('recipe/<int:pk>', RecipeDetailView.as_view(), name="recipe_detail"),
+    path('ingredients', IngredientListView.as_view(), name="ingredient_list"),
     path('ingredient/create', IngredientCreateView.as_view(), name="ingredient_create")
 ]
