@@ -19,7 +19,7 @@ from django.urls import path
 from django.views.i18n import JavaScriptCatalog
 
 from app.views import IndexView, RecipeListView, RecipeDetailView, IngredientCreateView, IngredientListView, \
-    IngredientUpdateView, LoginFormView
+    IngredientUpdateView, LoginFormView, TestJsonView
 
 urlpatterns = [
 ]
@@ -33,5 +33,6 @@ urlpatterns += i18n_patterns(
     path('ingredients', IngredientListView.as_view(), name="ingredient_list"),
     path('ingredient/create', IngredientCreateView.as_view(), name="ingredient_create"),
     path('ingredient/update/<int:pk>', IngredientUpdateView.as_view(), name="ingredient_update"),
-    path('login', LoginFormView.as_view(), name="login")
+    path('login', LoginFormView.as_view(), name="login"),
+    path('json-test', TestJsonView.as_view(), name="login")
 )

@@ -13,5 +13,5 @@ Historique de toutes les commandes
 - ```makemessages --ignore venv --locale fr```
 - ```makemessages --ignore venv --locale en```
 
-- Compiler les meessages de traduction modifiés dans le ... :
+- Compiler les messages de traduction modifiés dans le django.po :
 - ```compilemessages --ignore .venv```

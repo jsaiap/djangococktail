@@ -1,6 +1,9 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, FormView
 
 from app.forms.login import LoginForm
@@ -55,17 +58,33 @@ class IngredientUpdateView(LoginRequiredMixin, UpdateView):
 class LoginFormView(FormView):
     template_name = 'login.html'
     form_class = LoginForm
+    success_url = "/"
 
     def form_valid(self, form):
-        email = form.cleaned_data['email']
+        username = form.cleaned_data['username']
         password = form.cleaned_data['password']
 
-        user = authenticate(email=email, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
-            login(self.request)
+            login(self.request, user)
+            messages.add_message(
+                self.request, messages.INFO,
+                f'Hello {user.username}'
+            )
             return super().form_valid(form)
 
         form.add_error(None, "email / mdp invalide")
         return super().form_invalid(form)
 
 
+class TestJsonView(View):
+    http_method_names = ['get']
+
+    def get(self, request, *args, **kwargs):
+        ingredients = Ingredient.objects.all()
+        return JsonResponse(
+            [{"id": i.pk,
+              "name": i.name_singular
+            } for i in ingredients],
+            safe=False
+        )
