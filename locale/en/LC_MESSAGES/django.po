@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 11:11+0000\n"
+"POT-Creation-Date: 2021-12-13 08:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,4 +24,12 @@ msgstr ""
 
 #: cocktails/settings.py:141
 msgid "French"
+msgstr ""
+
+#: templates/index.html:7
+msgid "Hi visitor!"
+msgstr ""
+
+#: templates/index.html:9
+msgid "I hope you will enjoy this Website"
 msgstr ""

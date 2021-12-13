@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
     <h1>Index !</h1>
+
+    {% trans "Hi visitor!" %}
+    <p>
+    {% blocktrans trimmed %}
+        I hope you
+        will
+        enjoy
+        this
+        Website
+    {% endblocktrans %}
+    </p>
+
+    <a href="{% url 'recipe_list' %}">Recettes</a>
 {% endblock %}
