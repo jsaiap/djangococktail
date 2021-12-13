@@ -2,9 +2,12 @@
 
 Historique de toutes les commandes
 
-## Init depot
+## Init projet
 
-- ```createsuperuser```
+- ```createsuperuser``` pour localhost/admin
+
+## Init des modeles
+
 - ```makemigrations```
 - ```migrate```
 
